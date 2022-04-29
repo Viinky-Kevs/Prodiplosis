@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style_base.css') }}">
+    <!-- Boxicons.com Iconos (utilizar font)-->
+
+    {% block style %}
+    {% endblock %}
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.ico') }}" sizes="16x16" type="image/png">
+    {% block javascript %}
+    {% endblock %}
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+	<div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name"> &nbsp; Análisis prodiplosis</div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+
+        <ul class="nav-list">
+            <li>
+                <a href="{{ url_for('home') }}">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Inicio</span>
+                </a>
+                <span class="tooltip">Inicio</span>
+            </li>
+            <li>
+                <a href="{{ url_for('trends') }}">
+                    <i class='bx bx-trending-up'></i>
+                    <span class="links_name">Tendencias</span>
+                </a>
+                <span class="tooltip">Tendecias</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class='bx bx-map-alt' ></i>
+                    <span class="links_name"> Mapa interactivo </span>
+                </a>
+                <span class="tooltip"> Mapa </span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class='bx bx-upload' ></i>
+                    <span class="links_name"> Carga de datos </span>
+                </a>
+                <span class="tooltip"> Carga </span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-network-chart' ></i>
+                    <span class="links_name"> Raspado web </span>
+                </a>
+                <span class="tooltip"> Web </span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="links_name">Visualización inicial</span>
+                </a>
+                <span class="tooltip">Visualización</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class='bx bx-pie-chart-alt-2' ></i>
+                    <span class="links_name">Análisis</span>
+                </a>
+                <span class="tooltip">Análisis</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name"> Cerrar sesión </span>
+                </a>
+                <span class="tooltip"> Cerrar sesión </span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class='bx bx-user' ></i>
+                    <span class="links_name">Iniciar Sesión</span>
+                </a>
+                <span class="tooltip">Iniciar Sesión</span>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class='bx bx-group'></i>
+                    <span class="links_name">Equipo</span>
+                </a>
+                <span class="tooltip">Equipo</span>
+            </li> 
+            <li class="profile">
+                <div class="profile-details">
+                    <!--<img src="{{ url_for('static', filename='images/uninorte.png')}}" alt="profileImg">-->
+                    <div class="name_job">
+                        <div class="name">UNAL</div>
+                        <div class="uni">Prodiplosis</div>
+                    </div>
+                </div>
+                <a href="https://github.com/Viinky-Kevs/ProyectoAppWeb" target="_blank">
+                    <i class='bx bxl-github' id="github" ></i>
+                </a>    
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+  	    {% block content %}
+
+  	    {% endblock %}
+    </section>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/script_base.js') }}"></script>
+</body>
+</html>

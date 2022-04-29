@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %} Tendencias {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_trends.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+
+{% block content %}
+<!-- Seccion de Google Trends -->
+<div>
+    <br>
+    <h1 class="title">
+        Tendencias de Google
+    </h1>
+    <br>
+    <div class="inputs">
+        <div class="form1">
+            <form action="" method="POST">
+                <label for="got">Busqueda en Google Trends</label>
+                <input type="text" id = 'got' name = 'got' placeholder="Buscando...">
+                <input type = "submit" value = "Buscar">
+            </form>
+        </div> 
+        <div class="form2">
+            <form action="" method="POST">
+                <label for="date1">Selecciona fecha inicial</label>
+                <br>
+                <input type="date" id = 'date1' name = 'date1'>
+            </form>
+        </div>
+        <div class="form3">
+            <form action="" method="POST">
+                <label for="date2">Selecciona fecha final</label>
+                <br>
+                <input type="date" id = 'date2' name = 'date2'>
+            </form>
+        </div>
+    </div>
+    <br> 
+    <div id='chart' class='chart'”></div>
+    <br>
+    <h2 class="subtitle">
+        Tendencias por Departamento
+    </h2>
+    <br>
+    <div class="dataframe">
+        {% for table in tables %}
+            {{ table|safe}}
+        {% endfor %}
+    </div>
+    
+    <br>
+    <!-- Seccion de Twitter Trends -->
+    <h1 class="title">
+        Tendencias de Twitter
+    </h1>
+    <br>
+    <form action="">
+        <label for="twt">Busqueda en Twitter Trends</label>
+        <input type="text"  id = 'twt' name = 'twt'>
+        <input type = "submit" value = "Buscar">
+    </form>
+    <br> 
+</div>
+
+<!-- Sección de imágenes intercativos  -->
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+  var graphs = {{graphJSON | safe}};
+  Plotly.plot('chart',graphs,{});
+</script>
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+<script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+</script>
+{% endblock %}
