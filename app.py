@@ -12,6 +12,9 @@ from flask_mail import Mail, Message
 from flask_socketio import SocketIO
 
 import json
+import ee
+import folium
+import geemap.foliumap as geemap
 import plotly
 import pandas as pd
 import plotly.graph_objects as go
@@ -154,6 +157,33 @@ def trends():
     return render_template('trends.html', 
                             graphJSON = graphJSON, 
                             tables=[df.to_html(classes='data', header="true")])
+
+@app.route('/maps')
+def maps():
+    ee.Initialize()
+    figure = folium.Figure()
+    Map = geemap.Map(plugin_Draw = True, 
+                         Draw_export = False,
+                         plugin_LayerControl = False,
+                         location = [4.3, -76.1],
+                         zoom_start = 10,
+                         plugin_LatLngPopup = False)
+                         
+    Map.add_basemap('HYBRID')
+    Map.add_to(figure)
+    figure.render()
+
+    dict_map = Map.to_dict()
+        
+    ide = dict_map['id']
+    name = 'map_'
+    complete = name + ide
+            
+    tile = dict_map['children']['openstreetmap']['id']
+    layer = 'tile_layer_'
+    complete2 = layer + tile
+    print(complete)
+    return render_template('map.html', map = figure)
 
 @app.route("/registrar-usuario", methods=['POST','GET'])
 def registrar():

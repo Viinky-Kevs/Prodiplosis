@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Mapa {% endblock %}
+
+{% block javascript %}
+<style>
+    # {{ complete}} {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+    }
+</style>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_map.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="map">
+    {{ map.html.render|safe }}
+</div>
+<script> {{ map.script.render | safe }}</script>
+{% endblock %}
