@@ -171,19 +171,12 @@ def maps():
                          
     Map.add_basemap('HYBRID')
     Map.add_to(figure)
-    figure.render()
+    figure.save('templates/map.html')
+    return render_template('maps.html')
 
-    dict_map = Map.to_dict()
-        
-    ide = dict_map['id']
-    name = 'map_'
-    complete = name + ide
-            
-    tile = dict_map['children']['openstreetmap']['id']
-    layer = 'tile_layer_'
-    complete2 = layer + tile
-    print(complete)
-    return render_template('map.html', map = figure)
+@app.route('/maps/map')
+def map():
+    return render_template('map.html')
 
 @app.route("/registrar-usuario", methods=['POST','GET'])
 def registrar():

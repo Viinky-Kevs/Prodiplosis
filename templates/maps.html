@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Mapa {% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_map.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<h1>
+    Google Earth Engine
+</h1>
+<br>
+<div class="map">
+    <div class="fchild ">
+
+    </div>
+    <div class="fchild ">
+        <iframe class="map", src="/maps/map" width="800" height="800"></iframe>
+    </div>
+</div>
+
+{% endblock %}

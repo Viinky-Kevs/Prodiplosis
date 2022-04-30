@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+    font-size: 35px;
+}
+
+.map {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.fchild {
+    width: 50%;
+    float: left;
+    padding: 10px;
+}  

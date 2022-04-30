@@ -46,12 +46,13 @@
         Tendencias por Departamento
     </h2>
     <br>
-    <div class="dataframe">
-        {% for table in tables %}
-            {{ table|safe}}
-        {% endfor %}
-    </div>
-    
+    <div class="table">
+        <div class="dataframe">
+            {% for table in tables %}
+                {{ table|safe}}
+            {% endfor %}
+        </div>
+    </div>   
     <br>
     <!-- Seccion de Twitter Trends -->
     <h1 class="title">
